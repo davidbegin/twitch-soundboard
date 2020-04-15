@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+
+echo "Searching Messages for $1"
+
+SOUNDEFFECT_REQUEST=$(beginchat -c 30 | grep "$1: soundeffect" | tail -n 1 | sed "s/$1: soundeffect //")
+
+echo "$SOUNDEFFECT_REQUEST"
+
+./add_sound_effect $SOUNDEFFECT_REQUEST

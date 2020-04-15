@@ -1,0 +1,4 @@
+#!/usr/bin/bash
+
+ls | sort | sed -e 's/.m4a$//' -e 's/.opus$//' -e 's/.mp3$//' -e 's/.wav$//' | uniq
+

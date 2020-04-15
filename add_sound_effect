@@ -1,0 +1,21 @@
+#!/usr/bin/bash
+
+echo "Downloading $1 as $2"
+
+# dougthecoder: (?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^""&?/ ]{11})
+
+if [[ -z "$5" ]]
+then
+  SAMPLES_PATH="/home/begin/stream/Stream/Samples"
+else
+  echo "ITS A THEME!"
+  SAMPLES_PATH="/home/begin/stream/Stream/Samples/theme_songs"
+fi
+
+if [[ -z "$3" && -z "$4" ]]
+then
+  youtube-dl -x "$1" -o "$2.%(ext)s"
+else
+  echo "Cutting from $3 to $4"
+  youtube-dl -x --postprocessor-args "-ss $3 -to $4" $1 -o "$SAMPLES_PATH/$2.%(ext)s"
+fi
