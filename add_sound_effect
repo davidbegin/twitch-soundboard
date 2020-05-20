@@ -18,5 +18,5 @@ then
 else
   echo "Cutting from $3 to $4"
   # youtube-dl --no-cache-dir -x --postprocessor-args "-ss $3 -to $4" $1 -o "$SAMPLES_PATH/$2.opus"
-  youtube-dl --no-cache-dir -x --postprocessor-args "-ss $3 -to $4" $1 -o "$SAMPLES_PATH/$2.%(ext)s"
+  youtube-dl --no-cache-dir -x --postprocessor-args "-ss $5 -to $4" $1 -o "$SAMPLES_PATH/$2.%(ext)s"
 fi
