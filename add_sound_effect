@@ -10,14 +10,18 @@ else
   SAMPLES_PATH="/home/begin/stream/Stream/Samples/theme_songs"
 fi
 
+# mrsommerfeld: @beginbot youtube-dl --prefer-free-formats
+
 if [[ -z "$3" && -z "$4" ]]
 then
   echo "No Timestamps"
-  youtube-dl --no-cache-dir -x "$1" --audio-format "opus" -o "$SAMPLES_PATH/$2.opus"
+  youtube-dl --no-cache-dir -x "$1" --audio-format="vorbis" -o "$SAMPLES_PATH/$2.opus"
 else
   echo "Cutting from $3 to $4"
-  youtube-dl --no-cache-dir --audio-format "opus" -x --postprocessor-args "-ss $3 -to $4" $1 -o "$SAMPLES_PATH/$2.opus"
+  # THIS DOES NOT WORK
+  # youtube-dl --no-cache-dir --audio-format="vorbis" -x --postprocessor-args "-ss $3 -to $4" $1 -o "$SAMPLES_PATH/$2.ogg"
+  youtube-dl --no-cache-dir --audio-format="vorbis" -x --postprocessor-args "-ss $3 -to $4" $1 -o "$SAMPLES_PATH/$2.opus"
 fi
 
-ffmpeg -i "$SAMPLES_PATH/$2.opus" -c:a libvorbis "$SAMPLES_PATH/$2.ogg"
-rm "$SAMPLES_PATH/$2.opus"
+# ffmpeg -i "$SAMPLES_PATH/$2.opus" -y -c:a libvorbis "$SAMPLES_PATH/$2.ogg"
+# rm "$SAMPLES_PATH/$2.opus"
