@@ -18,6 +18,7 @@ if [[ -z "$3" && -z "$4" ]]
 then
   echo "No Timestamps"
   ffmpeg -i "$SAMPLES_PATH/$2.opus" -y -c:a libvorbis "$SAMPLES_PATH/$2.ogg"
+  ffmpeg -i "$SAMPLES_PATH/$2.opus" -y -c:a libvorbis "$SAMPLES_PATH/$2.ogg"
 else
   echo "Cutting from $3 to $4"
   ffmpeg -ss $3 -to $4 -i "$SAMPLES_PATH/$2.opus" -y -c:a libvorbis "$SAMPLES_PATH/$2.ogg"
